@@ -18,6 +18,15 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    @blog = Blog.find(params[:id])
+
+    respond_to do |format|
+      if @blog.destroy
+        format.html { redirect_to action: "index", notice: 'Blog was successfully destroyed.' }
+      else
+        format.html { render action: "show", id: params[:id] }
+      end
+    end
   end
 
   def show

@@ -37,6 +37,7 @@
               <h2>
                   <%= link_to blog.title, controller: "blogs", action: "show", id: blog.id %>
               </h2>
+              <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
               <p><span class="glyphicon glyphicon-time"></span> <%= blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
               <hr>
               <%= image_tag blog.image, class: 'img-responsive' %>
