@@ -16,11 +16,15 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @all_blogs = retrieve_all_blogs
+    @all_blogs = retrieve_all_blogs(true)
   end
 
-  def retrieve_all_blogs
-    Blog.all
+  def retrieve_all_blogs(desc)
+    if (desc)
+      Blog.order('id DESC').all
+    else
+      Blog.all
+    end
   end
 
   def retrieve_blog(id)
