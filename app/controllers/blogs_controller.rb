@@ -15,6 +15,20 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = retrieve_blog(params[:id])
+  end
+
+  def update
+    @blog = Blog.find(params[:id])
+    blog_param = params[:blog]
+
+    respond_to do |format|
+      if @blog.update(title: blog_param[:title], image: blog_param[:image], body: blog_param[:body])
+        format.html { redirect_to @blog, notice: 'Blog was successfully edited.' }
+      else
+        format.html { render action: "index" }
+      end
+    end
   end
 
   def destroy
@@ -48,4 +62,13 @@ class BlogsController < ApplicationController
   def retrieve_blog(id)
     Blog.find(id)
   end
+
+  private
+
+    def blog_params
+      # It's mandatory to specify the nested attributes that should be whitelisted.
+      # If you use `permit` with just the key that points to the nested attributes hash,
+      # it will return an empty hash.
+      params.require(:blog).permit(:title, :image, :body)
+    end
 end
