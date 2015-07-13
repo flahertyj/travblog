@@ -2,9 +2,8 @@ class CreateBlogs < ActiveRecord::Migration
   def change
     create_table :blogs do |t|
       t.string :title
-      t.datetime :posted_time
-      t.string :image
-      t.string :body
+      t.text :image
+      t.text :body
 
       t.timestamps null: false
     end

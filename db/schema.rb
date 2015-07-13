@@ -14,12 +14,11 @@
 ActiveRecord::Schema.define(version: 20150711223238) do
 
   create_table "blogs", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.datetime "posted_time"
-    t.string   "image",       limit: 255
-    t.string   "body",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "title",      limit: 255
+    t.text     "image",      limit: 65535
+    t.text     "body",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
