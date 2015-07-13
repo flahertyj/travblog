@@ -9,6 +9,7 @@
                 <!-- Blog Post -->
                 <!-- Title -->
                 <h2><%= @blog.title %></h2>
+                <%= link_to 'Delete', @blog, method: :delete, data: { confirm: 'Are you sure?' } %>
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> <%= @blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
                 <hr>
