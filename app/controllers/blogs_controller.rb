@@ -3,6 +3,15 @@ class BlogsController < ApplicationController
   end
 
   def create
+    @blog = Blog.new(title: params[:title], image: params[:image], body: params[:body])
+
+    respond_to do |format|
+      if @blog.save
+        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+      else
+        format.html { render action: "new" }
+      end
+    end
   end
 
   def edit
