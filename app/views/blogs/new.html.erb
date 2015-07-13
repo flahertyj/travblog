@@ -1,2 +1,18 @@
-<h1>Blogs#new</h1>
-<p>Find me in app/views/blogs/new.html.erb</p>
+<%= form_tag("/blogs", method: "post") do %>
+  <%= label_tag("Title") %>
+  <br>
+  <%= text_field_tag :title %>
+  <br><br>
+
+  <%= label_tag("Image") %>
+  <br>
+  <%= text_field_tag :image %>
+  <br><br>
+
+  <%= label_tag("Body: ") %>
+  <br>
+  <%= text_field_tag :body %>
+  <br><br>
+
+  <%= submit_tag "Create" %>
+<% end %>
