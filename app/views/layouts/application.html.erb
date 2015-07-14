@@ -55,9 +55,22 @@
                       <!-- <a href="#">Blogs</a> -->
                       <%= link_to "Blog Posts", controller: "blogs", action: "index" %>
                   </li>
+                  <% if current_user %>
+                    <li>
+                        <%= link_to "New Blog", controller: "blogs", action: "new" %>
+                    </li>
+                  <% end %>
+              </ul>
+              <ul class="nav navbar-nav pull-right">
+                <% if !current_user %>
                   <li>
-                      <%= link_to "New Blog", controller: "blogs", action: "new" %>
+                    <%= link_to "Sign In", controller: "sessions", action: "new" %>
                   </li>
+                <% else %>
+                  <li>
+                    <%= link_to "Sign Out", controller: "sessions", action: "destroy" %>
+                  </li>
+                <% end %>
               </ul>
           </div>
           <!-- /.navbar-collapse -->
