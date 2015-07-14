@@ -38,7 +38,7 @@
                   <%= link_to blog.title, controller: "blogs", action: "show", id: blog.id %>
               </h2>
 
-              <% if current_user %>
+              <% if admin_user? %>
                 <%= link_to 'Edit', edit_blog_path(blog) %>
                 <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>

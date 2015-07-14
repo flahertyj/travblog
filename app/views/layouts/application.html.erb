@@ -55,7 +55,7 @@
                       <!-- <a href="#">Blogs</a> -->
                       <%= link_to "Blog Posts", controller: "blogs", action: "index" %>
                   </li>
-                  <% if current_user %>
+                  <% if admin_user? %>
                     <li>
                         <%= link_to "New Blog", controller: "blogs", action: "new" %>
                     </li>
