@@ -45,6 +45,8 @@ class BlogsController < ApplicationController
 
   def show
     @blog = retrieve_blog(params[:id])
+    @commenter_name = commenter_name
+    @comments = retrieve_comments
   end
 
   def index
@@ -61,6 +63,14 @@ class BlogsController < ApplicationController
 
   def retrieve_blog(id)
     Blog.find(id)
+  end
+
+  def commenter_name
+    current_user ? current_user.username : 'Anonymous'
+  end
+
+  def retrieve_comments
+    Blog.find(@blog.id).comments
   end
 
   private
