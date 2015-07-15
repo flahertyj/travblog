@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   get    'logout'  => 'sessions#destroy'
 
-  resources :blogs
+  resources :blogs do
+    resources :comments
+  end
 
   resources :users
   get    'signup'  => 'users#new'
