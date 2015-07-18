@@ -51,10 +51,11 @@ class BlogsController < ApplicationController
 
   def index
     @all_blogs = retrieve_all_blogs(true)
-    @current_location = [Location.last]
+    last_loc = Location.last
+    @current_location = last_loc ? [last_loc] : [Location.new(name: 'Denver, CO', latitude: 39.7392, longitude: -104.9903)]
     @hash = Gmaps4rails.build_markers(@current_location) do |location, marker|
-      marker.lat location.lat
-      marker.lng location.lng
+      marker.lat location.latitude
+      marker.lng location.longitude
     end
   end
 

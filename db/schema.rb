@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150718210525) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.decimal  "lat",                    precision: 15, scale: 10
-    t.decimal  "lng",                    precision: 15, scale: 10
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
