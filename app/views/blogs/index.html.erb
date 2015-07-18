@@ -86,12 +86,14 @@
                 });
               </script>
 
-              <div>
-                <%= form_for :location, url: "/locations" do |f| %>
-                  Where are you? <%= f.text_field :name %>
-                  <%= f.submit "Submit", class: "btn btn-primary" %>
-                <% end %>
-              </div>
+              <% if admin_user? %>
+                <div>
+                  <%= form_for :location, url: "/locations" do |f| %>
+                    Where are you? <%= f.text_field :name %>
+                    <%= f.submit "Submit", class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+              <% end %>
           </div>
 
         </div>
