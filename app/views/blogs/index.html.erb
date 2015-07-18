@@ -85,6 +85,13 @@
                   handler.getMap().setZoom(6);
                 });
               </script>
+
+              <div>
+                <%= form_for :location, url: "/locations" do |f| %>
+                  Where are you? <%= f.text_field :name %>
+                  <%= f.submit "Submit", class: "btn btn-primary" %>
+                <% end %>
+              </div>
           </div>
 
         </div>
