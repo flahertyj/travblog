@@ -25,7 +25,7 @@
                 <% end %>
                 <hr>
                 <!-- Post Content -->
-                <p><%= @blog.body %></p>
+                <div><%= @blog.body.gsub(/\n/, '<br/>').html_safe %></div>
                 <hr>
                 <!-- Blog Comments -->
                 <!-- Comments Form -->
