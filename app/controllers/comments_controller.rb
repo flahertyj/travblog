@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: 'Blog was successfully created.' }
       else
         # format.html { render action: "new" }
-        format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: 'Blog was not successfully created.' }
+        format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: "Blog was not successfully created - #{@comment.errors.full_messages.to_sentence}" }
       end
     end
   end
