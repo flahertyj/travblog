@@ -49,9 +49,11 @@
 
               <p><span class="glyphicon glyphicon-time"></span> <%= blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
               <hr>
-              <div style="box-shadow: -10px 10px 5px #555555;">
-                <%= image_tag blog.image, class: 'img-responsive' %>
-              </div>
+              <% if blog.images[0] %>
+                <div style="box-shadow: -10px 10px 10px #555555;">
+                  <%= image_tag blog.images[0].name, class: 'img-responsive' %>
+                </div>
+              <% end %>
               <hr>
               <p><%= truncate(blog.body, :length => 300) %></p>
               <%= link_to "Read More", {controller: "blogs", action: "show", id: blog.id}, class: "btn btn-primary" %>
@@ -86,16 +88,17 @@
                     handler.getMap().setZoom(6);
                   });
                 </script>
-
-                <% if admin_user? %>
-                  <div>
-                    <%= form_for :location, url: "/locations" do |f| %>
-                      Where are you? <%= f.text_field :name %>
-                      <%= f.submit "Submit", class: "btn btn-primary" %>
-                    <% end %>
-                  </div>
-                <% end %>
               </div>
+
+              <% if admin_user? %>
+                <div>
+                  <%= form_for :location, url: "/locations" do |f| %>
+                    Where are you? <%= f.text_field :name %>
+                    <%= f.submit "Submit", class: "btn btn-primary" %>
+                  <% end %>
+                  <br>
+                </div>
+              <% end %>
 
               <div class="well" style='width: 440px; padding-top: 0px; border-style: solid; border-color: #000;'>
                 <div style="width: 78%; margin:0 auto;">

@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718210525) do
+ActiveRecord::Schema.define(version: 20150719051018) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.text     "image",      limit: 65535
     t.text     "body",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -30,6 +29,15 @@ ActiveRecord::Schema.define(version: 20150718210525) do
   end
 
   add_index "comments", ["blog_id"], name: "index_comments_on_blog_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "blog_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "images", ["blog_id"], name: "index_images_on_blog_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name",       limit: 255

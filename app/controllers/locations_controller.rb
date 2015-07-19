@@ -1,8 +1,6 @@
 class LocationsController < ApplicationController
 
   def create
-    puts "PARAMS"
-    p params
     @location = Location.new(name: params[:location][:name])
 
     respond_to do |format|
