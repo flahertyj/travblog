@@ -49,7 +49,7 @@ test:
 #
 production:
   adapter: mysql2
-  database: ebdb
+  database: travblogprod
   username: admin
   host: travblog.c24dyedsbfnt.us-west-2.rds.amazonaws.com
   password: travblogpass
