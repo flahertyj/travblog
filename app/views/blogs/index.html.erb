@@ -74,26 +74,37 @@
               <div class="well" style='width: 440px; padding-top: 0px;'>
                 <h3>Melanie is in: <%= @current_location[0].name %></h3>
                 <div id="map" style='width: 400px; height: 300px;'></div>
+
+                <script type="text/javascript">
+                  handler = Gmaps.build('Google');
+                  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+                    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+                    handler.bounds.extendWith(markers);
+                    handler.fitMapToBounds();
+                    handler.getMap().setZoom(6);
+                  });
+                </script>
+
+                <% if admin_user? %>
+                  <div>
+                    <%= form_for :location, url: "/locations" do |f| %>
+                      Where are you? <%= f.text_field :name %>
+                      <%= f.submit "Submit", class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
 
-              <script type="text/javascript">
-                handler = Gmaps.build('Google');
-                handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-                  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-                  handler.bounds.extendWith(markers);
-                  handler.fitMapToBounds();
-                  handler.getMap().setZoom(6);
-                });
-              </script>
-
-              <% if admin_user? %>
-                <div>
-                  <%= form_for :location, url: "/locations" do |f| %>
-                    Where are you? <%= f.text_field :name %>
-                    <%= f.submit "Submit", class: "btn btn-primary" %>
+              <div class="well" style='width: 440px; padding-top: 0px;'>
+                <div style="width: 78%; margin:0 auto;">
+                  <h3>@flahertymel's Instagram</h3>
+                  <% @instagram.each do |instagram| %>
+                    <div style="padding-bottom: 4px; display: inline-block;">
+                      <%= link_to( image_tag(instagram.images.thumbnail.url), instagram.link ) %>
+                    </div>
                   <% end %>
                 </div>
-              <% end %>
+              </div>
           </div>
 
         </div>

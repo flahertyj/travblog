@@ -1,4 +1,17 @@
 class BlogsController < ApplicationController
+  def index
+    @all_blogs = retrieve_all_blogs(true)
+
+    last_loc = Location.last
+    @current_location = last_loc ? [last_loc] : [Location.new(name: 'Denver, CO', latitude: 39.7392, longitude: -104.9903)]
+    @hash = Gmaps4rails.build_markers(@current_location) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+    end
+
+    @instagram = Instagram.user_recent_media("630271193", {count: 8})
+  end
+
   def new
   end
 
@@ -47,16 +60,6 @@ class BlogsController < ApplicationController
     @blog = retrieve_blog(params[:id])
     @commenter_name = commenter_name
     @comments = retrieve_comments
-  end
-
-  def index
-    @all_blogs = retrieve_all_blogs(true)
-    last_loc = Location.last
-    @current_location = last_loc ? [last_loc] : [Location.new(name: 'Denver, CO', latitude: 39.7392, longitude: -104.9903)]
-    @hash = Gmaps4rails.build_markers(@current_location) do |location, marker|
-      marker.lat location.latitude
-      marker.lng location.longitude
-    end
   end
 
   def retrieve_all_blogs(desc)
