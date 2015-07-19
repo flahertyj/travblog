@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
             new_image.save
           end
         end
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to @blog }
       else
         format.html { render action: "new", notice: "Blog was not created @blog.errors.full_messages.to_sentence" }
       end
@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.update(title: blog_param[:title], image: blog_param[:image], body: blog_param[:body])
-        format.html { redirect_to @blog, notice: 'Blog was successfully edited.' }
+        format.html { redirect_to @blog }
       else
         format.html { render action: "index" }
       end
@@ -57,7 +57,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.destroy
-        format.html { redirect_to action: "index", notice: 'Blog was successfully destroyed.' }
+        format.html { redirect_to action: "index" }
       else
         format.html { render action: "show", id: params[:id] }
       end

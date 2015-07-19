@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: 'Blog was successfully created.' }
+        format.html { redirect_to "/blogs/#{params[:blog_id]}" }
       else
         # format.html { render action: "new" }
         format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: "Blog was not successfully created - #{@comment.errors.full_messages.to_sentence}" }
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.destroy
-        format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: 'Blog was successfully created.' }
+        format.html { redirect_to "/blogs/#{params[:blog_id]}" }
       else
         # format.html { render action: "new" }
         format.html { redirect_to "/blogs/#{params[:blog_id]}", notice: 'Blog was not successfully created.' }

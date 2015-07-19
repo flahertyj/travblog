@@ -53,7 +53,8 @@
                 <%= image_tag blog.images[0].name, class: 'img-responsive style_image' %>
               <% end %>
               <hr>
-              <div><%= truncate(blog.body.gsub(/\n/, '<br/>').html_safe, :length => 300) %></div>
+              <% blog_body = blog.body.truncate(300) %>
+              <div style="font-size:110%;"><%= blog_body.gsub(/\n/, '<br/>').html_safe %></div>
               <%= link_to "Read More", {controller: "blogs", action: "show", id: blog.id}, class: "btn btn-primary" %>
 
               <hr>
