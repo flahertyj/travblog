@@ -19,3 +19,7 @@ footer {
   max-height: 600px;
   max-width: 600px;
 }
+
+a:hover {
+   text-decoration:none;
+}
