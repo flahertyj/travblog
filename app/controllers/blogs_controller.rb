@@ -16,10 +16,18 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(title: params[:title], image: params[:image], body: params[:body])
+    @blog = Blog.new(title: params[:title], body: params[:body])
 
     respond_to do |format|
       if @blog.save
+        (0..11).each do |n|
+          image_sym = "image_#{n}".to_sym
+
+          if params[image_sym].present?
+            new_image = @blog.images.new(name: params[image_sym])
+            new_image.save
+          end
+        end
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
       else
         format.html { render action: "new" }

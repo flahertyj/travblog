@@ -19,8 +19,12 @@
                 <p><span class="glyphicon glyphicon-time"></span> <%= @blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
                 <hr>
                 <!-- Preview Image -->
-                <!-- <img class="img-responsive" src="../assets/images/chain-bridge.jpg" alt=""> -->
-                <%= image_tag(@blog.image, class: 'img-responsive') %>
+                <% @blog.images.each do |image| %>
+                  <div style="box-shadow: -10px 10px 10px #555555;">
+                    <%= image_tag(image.name, class: 'img-responsive') %>
+                  </div>
+                  <br><hr><br>
+                <% end %>
                 <hr>
                 <!-- Post Content -->
                 <p><%= @blog.body %></p>
