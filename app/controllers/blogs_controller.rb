@@ -30,7 +30,7 @@ class BlogsController < ApplicationController
         end
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", notice: "Blog was not created @blog.errors.full_messages.to_sentence" }
       end
     end
   end

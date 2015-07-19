@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
       if @location.save
         format.html { redirect_to '/', notice: 'New location was successfully saved.' }
       else
-        format.html { redirect_to '/', notice: 'New location was successfully saved.' }
+        format.html { redirect_to '/', notice: 'New location was not successfully saved.' }
       end
     end
   end

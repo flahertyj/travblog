@@ -55,7 +55,6 @@
               <hr>
               <p><%= truncate(blog.body, :length => 300) %></p>
               <%= link_to "Read More", {controller: "blogs", action: "show", id: blog.id}, class: "btn btn-primary" %>
-              <!-- <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a> -->
 
               <hr>
             <% end %>

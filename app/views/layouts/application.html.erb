@@ -69,6 +69,10 @@
       <!-- /.container -->
   </nav>
 
+  <% if flash[:notice] %>
+    <div class="alert" style="background-color:black; color:red; font-size:130%; text-align:center;"><%= flash[:notice] %></div>
+  <% end %>
+
 <%= yield %>
   <!-- Footer -->
   <footer>
