@@ -40,12 +40,12 @@
                     <% end %>
                 </div>
 
-                <hr>
 
                 <!-- Posted Comments -->
 
                 <!-- Comment -->
                 <% @comments.each do |comment| %>
+                  <hr>
                   <div class="media">
                       <!-- <a class="pull-left" href="#">
                           <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -61,7 +61,6 @@
                           <%= comment.body %>
                       </div>
                   </div>
-                  <hr>
                 <% end %>
 
                 <!-- Comment
