@@ -48,8 +48,8 @@
               <% end %>
 
               <p><span class="glyphicon glyphicon-time"></span> <%= blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
-              <hr>
               <% if blog.images[0] %>
+                <hr>
                 <%= image_tag blog.images[0].name, class: 'img-responsive style_image' %>
               <% end %>
               <hr>

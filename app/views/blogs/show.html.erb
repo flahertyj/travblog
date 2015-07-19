@@ -17,11 +17,11 @@
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> <%= @blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
-                <hr>
                 <!-- Preview Image -->
                 <% @blog.images.each do |image| %>
+                  <hr>
                   <%= image_tag(image.name, class: 'img-responsive style_image') %>
-                  <br><hr><br>
+                  <br><br>
                 <% end %>
                 <hr>
                 <!-- Post Content -->
