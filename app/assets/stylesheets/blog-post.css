@@ -16,4 +16,6 @@ footer {
 
 .style_image {
   box-shadow: -10px 10px 10px #555555;
+  max-height: 600px;
+  max-width: 600px;
 }
