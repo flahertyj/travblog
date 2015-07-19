@@ -20,9 +20,7 @@
                 <hr>
                 <!-- Preview Image -->
                 <% @blog.images.each do |image| %>
-                  <div style="box-shadow: -10px 10px 10px #555555;">
-                    <%= image_tag(image.name, class: 'img-responsive') %>
-                  </div>
+                  <%= image_tag(image.name, class: 'img-responsive style_image') %>
                   <br><hr><br>
                 <% end %>
                 <hr>

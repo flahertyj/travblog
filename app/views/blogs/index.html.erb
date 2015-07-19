@@ -50,9 +50,7 @@
               <p><span class="glyphicon glyphicon-time"></span> <%= blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
               <hr>
               <% if blog.images[0] %>
-                <div style="box-shadow: -10px 10px 10px #555555;">
-                  <%= image_tag blog.images[0].name, class: 'img-responsive' %>
-                </div>
+                <%= image_tag blog.images[0].name, class: 'img-responsive style_image' %>
               <% end %>
               <hr>
               <p><%= truncate(blog.body, :length => 300) %></p>
