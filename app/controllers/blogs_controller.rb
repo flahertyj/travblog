@@ -44,7 +44,16 @@ class BlogsController < ApplicationController
     blog_param = params[:blog]
 
     respond_to do |format|
-      if @blog.update(title: blog_param[:title], image: blog_param[:image], body: blog_param[:body])
+      if @blog.update(title: blog_param[:title], body: blog_param[:body])
+        (0..11).each do |n|
+          image_sym = "image_#{n}".to_sym
+
+          if params[image_sym].present?
+            new_image = @blog.images.new(name: params[image_sym])
+            new_image.save
+          end
+        end
+
         format.html { redirect_to @blog }
       else
         format.html { render action: "index" }

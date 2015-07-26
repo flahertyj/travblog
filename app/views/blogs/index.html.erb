@@ -51,7 +51,7 @@
               <p><span class="glyphicon glyphicon-time"></span> <%= blog.updated_at.strftime("Posted on %B %d, %Y") %></p>
               <% if blog.images[0] %>
                 <hr>
-                <%= image_tag blog.images[0].name, class: 'img-responsive style_image' %>
+                <%= image_tag blog.images[0].name, class: 'img-responsive style_image_index' %>
               <% end %>
               <hr>
               <% blog_body = blog.body.truncate(300) %>
@@ -112,9 +112,6 @@
           </div>
 
         </div>
-        <!-- /.row -->
-
-        <hr>
 
     </div>
     <!-- /.container -->
