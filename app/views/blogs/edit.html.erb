@@ -4,14 +4,16 @@
   <%= f.text_field :title %>
   <br><br>
 
-  <%= f.label :image %>
+  <%= label_tag("Images") %>
   <br>
-  <%= f.text_field :image %>
+  <% (0..11).each do |n| %>
+    <%= f.text_field "image_#{n}".to_sym %>
+  <% end %>
   <br><br>
 
   <%= f.label :body %>
   <br>
-  <%= f.text_field :body %>
+  <%= f.text_area :body %>
   <br><br>
 
   <%= f.submit "Save changes" %>
